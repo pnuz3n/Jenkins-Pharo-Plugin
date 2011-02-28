@@ -1,0 +1,2 @@
+This is (going to be) simple plugin to run Squeak/Pharo VM images from Jenkins.
+Currently simple running should work but there is little help etc.

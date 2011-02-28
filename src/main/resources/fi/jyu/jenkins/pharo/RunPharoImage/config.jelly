@@ -1,0 +1,35 @@
+
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+  <!--
+    This jelly script is used for per-project configuration.
+
+    See global.jelly for a general discussion about jelly script.
+  -->
+
+  <!--
+    Creates a text field that shows the value of the "name" property.
+    When submitted, it will be passed to the corresponding constructor parameter.
+  -->
+
+    <j:if test="${!empty(descriptor.installations)}">
+        <f:entry title="Squeak/Pharo VM">
+            <select class="setting-input" name="virtualMachineName">
+                <j:forEach var="inst" items="${descriptor.installations}">
+                    <f:option selected="${inst.name==instance.maven.name}" value="${inst.name}">${inst.name}</f:option>
+                </j:forEach>
+            </select>
+        </f:entry>
+    </j:if>
+    <f:entry title="Parameters for the VM" field="parameters">
+        <f:textbox />
+    </f:entry>
+    <f:entry title="Name of the start image" field="startImageName">
+        <f:textbox />
+    </f:entry>
+    <f:entry title="Name of the resulting image" field="resultingImageName">
+        <f:textbox />
+    </f:entry>
+    <f:entry title="Code to be executed" field="executeCode">
+        <f:textarea />
+    </f:entry>
+</j:jelly>
